@@ -1,0 +1,55 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+    <mat-toolbar color="primary">
+      <span class="toolbar-filler"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
+        [hidden]="!sidenav.opened">
+        <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-accordion>
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a mat-list-item class="sidenav-link" [routerLink]="['/dashboard']" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>dashboard</mat-icon>
+                <span class="title" mat-line>Books List</span>
+              </a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a mat-list-item class="sidenav-link" [routerLink]="['/contentManagement']" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>library_books</mat-icon>
+                <span class="title" mat-line>Content Management</span>
+              </a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a mat-list-item class="sidenav-link" [routerLink]="['/courses']" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>event_note</mat-icon>
+                <span class="title" mat-line>courses</span>
+              </a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar id="appToolbar" color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
+      [hidden]="sidenav.opened">
+      <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+    </button>
+    <a title="Kaplan" [routerLink]="['/dashboard']">
+      <img class="kaplan-logo right" src="assets/images/kaplan-logo.png" alt="Kaplan logo" />
+    </a>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

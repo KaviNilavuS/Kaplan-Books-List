@@ -1,0 +1,39 @@
+<h2 class="left">Welcome to Online {{dashboardEnum.Books}} !</h2>
+<mat-form-field class="left">
+  
+  <input matInput #searchValue type="text" placeholder="Search" (input) = "searchBook($event.target.value);" />
+
+  <button mat-button matSuffix mat-icon-button aria-label="Search" (click)="searcBook()" *ngIf="!showHide">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="resetSearch()" *ngIf="showHide">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<button mat-raised-button color="primary" class="create-btn" (click)="createNewBook()">Create New Book</button>
+
+<h3 class="left color">{{dashboardEnum.Allbooks}}</h3>
+
+<div class="container">
+    <mat-grid-list cols="2" rowHeight="280px" *ngIf="display.length > 0">
+        <mat-grid-tile *ngFor="let book of display">
+          <div class="card">
+              <div class="container">
+                <h4 class="title-color"><b>{{book.volumeInfo.title}}</b></h4> 
+                <p><i>About : {{book.volumeInfo.subtitle}}</i></p>
+                <div class="color">Authors: {{book.volumeInfo.authors}}</div>
+                <div class="color">Publisher: {{book.volumeInfo.publisher}}</div>
+                <div class="color">Published Date: {{book.volumeInfo.publishedDate}}</div>
+                <div class="buttons-action">
+                  <a  target="_blank" href="{{book.volumeInfo.previewLink}}" mat-raised-button color="primary">Preview</a>
+                  <a href="#" mat-raised-button color="primary">Buy Now</a>
+                </div>
+              </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div *ngIf="display.length <= 0">
+            <h4 class="title-color"><b>No Books Found</b></h4>
+      </div>
+</div>
